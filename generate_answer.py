@@ -192,7 +192,7 @@ def get_questions(path):
 os.environ["HF_HOME"] = get_model_root()
 huggingface_cache_path = get_model_root()
 os.environ['HF_HUB_OFFLINE'] = '1'
-# nltk.data.path.append('/data/user/seraveea/nltk_data')
+
 
 
 def _get_pipeline_tokenizer(gen_pipeline):
