@@ -162,7 +162,7 @@ If your files are in different locations, pass explicit paths where supported (f
 
 ## Model Paths To Fill
 
-Make sure required models are available locally.
+If you need to generate the responses in this repo, please make sure required models are available locally.
 Model paths are resolved in this order:
 
 1. `--model_root` (highest priority)
@@ -173,29 +173,12 @@ Model paths are resolved in this order:
 export SUREBENCH_MODEL_ROOT=/path/to/your/models
 ```
 
-Expected layout under your model root:
-
-```text
-<MODEL_ROOT>/
-	Qwen3-1.7B/                         # --model qwen3-1.7b
-	Qwen3-8B/                           # --model qwen3-8b / qwen3-8b-vllm
-	llama-3-70B-Instruct/               # --model llama-70b
-	Meta-Llama-3-8B-Instruct_hf/        # default NLI model / --model llama-8b
-	deepseek-r1-distill-llama-8B/       # --model deepseek-r1-8b
-	deberta-large-mnli/                 # NLI backend for DSE (--nli_type nlp)
-	bert-uncased/                       # BERTScore in ConsistencyScorer
-	models--sentence-transformers--all-MiniLM-L6-v2/snapshots/<hash>/
-	models--meta-llama--Llama-3.1-405B-Instruct-FP8/snapshots/<hash>/
-	models--Qwen--Qwen3-235B-A22B-FP8/snapshots/<hash>/
-```
-
-If you download through `huggingface-cli`, snapshot-based models are usually placed into the correct subdirectories automatically.
 
 ## Citation
 
 If you use SUREBench in your paper or project, please include the corresponding paper/repository citation.
 
-Original implementations:
+Original implementations of converd UQ methods:
 
 - [KLE](https://github.com/AlexanderVNikitin/kernel-language-entropy)
 - [DSE](https://github.com/lorenzkuhn/semantic_uncertainty)
