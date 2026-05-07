@@ -1,0 +1,17 @@
+{
+  "dataset": "bioasq",
+  "model": "gpt4o-mini",
+  "total_questions": 340,
+  "total_wrong": 140,
+  "uq_threshold (bottom 20.0%)": -3.147474765777588,
+  "wrong_and_low_uq_count": 6,
+  "oc_ratio": 0.0429,
+  "qids": [
+    "65f82058c4010b4d7800003d",
+    "660d2a50fdcbea915f00003a",
+    "6616b259fdcbea915f00005a",
+    "662cfd21187cba990d000009",
+    "662e29f9187cba990d00000a",
+    "663014c8187cba990d000020"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "dataset": "svamp",
+  "model": "llama3-70b",
+  "total_questions": 300,
+  "total_wrong": 58,
+  "uq_threshold (bottom 20.0%)": -3.1972243785858154,
+  "wrong_and_low_uq_count": 5,
+  "oc_ratio": 0.0862,
+  "qids": [
+    "chal-229",
+    "chal-254",
+    "chal-406",
+    "chal-547",
+    "chal-895"
+  ]
+}

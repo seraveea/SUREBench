@@ -1,0 +1,19 @@
+{
+  "dataset": "svamp",
+  "model": "phi4:14b",
+  "total_questions": 300,
+  "total_wrong": 112,
+  "uq_threshold (bottom 20.0%)": -3.1972243785858154,
+  "wrong_and_low_uq_count": 8,
+  "oc_ratio": 0.0714,
+  "qids": [
+    "chal-147",
+    "chal-195",
+    "chal-275",
+    "chal-480",
+    "chal-688",
+    "chal-914",
+    "chal-934",
+    "chal-94"
+  ]
+}

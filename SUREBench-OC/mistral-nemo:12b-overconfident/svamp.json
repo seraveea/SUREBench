@@ -1,0 +1,26 @@
+{
+  "dataset": "svamp",
+  "model": "mistral-nemo:12b",
+  "total_questions": 300,
+  "total_wrong": 146,
+  "uq_threshold (bottom 20.0%)": -2.8761277198791504,
+  "wrong_and_low_uq_count": 15,
+  "oc_ratio": 0.1027,
+  "qids": [
+    "chal-105",
+    "chal-157",
+    "chal-225",
+    "chal-247",
+    "chal-368",
+    "chal-391",
+    "chal-411",
+    "chal-568",
+    "chal-619",
+    "chal-643",
+    "chal-707",
+    "chal-734",
+    "chal-788",
+    "chal-799",
+    "chal-842"
+  ]
+}

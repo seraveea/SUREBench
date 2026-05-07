@@ -1,0 +1,12 @@
+{
+  "dataset": "svamp",
+  "model": "phi4-mini:3.8b",
+  "total_questions": 300,
+  "total_wrong": 70,
+  "uq_threshold (bottom 20.0%)": -3.00687894821167,
+  "wrong_and_low_uq_count": 1,
+  "oc_ratio": 0.0143,
+  "qids": [
+    "chal-530"
+  ]
+}

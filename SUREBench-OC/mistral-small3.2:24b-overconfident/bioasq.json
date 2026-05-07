@@ -1,0 +1,30 @@
+{
+  "dataset": "bioasq",
+  "model": "mistral-small3.2:24b",
+  "total_questions": 340,
+  "total_wrong": 159,
+  "uq_threshold (bottom 20.0%)": -3.0246520042419434,
+  "wrong_and_low_uq_count": 19,
+  "oc_ratio": 0.1195,
+  "qids": [
+    "65cf6c301930410b13000008",
+    "65cfa22b1930410b1300000c",
+    "65d136f41930410b1300003d",
+    "65f493cac4010b4d78000012",
+    "65f59db8c4010b4d78000014",
+    "65f5a319c4010b4d78000016",
+    "65f774a4c4010b4d78000029",
+    "65f7789dc4010b4d78000034",
+    "65f85fdbc4010b4d78000054",
+    "660d2a50fdcbea915f00003a",
+    "6616547dfdcbea915f00004f",
+    "661688cefdcbea915f000053",
+    "661be07748a2c27714000002",
+    "661d4c2eeac11fad3300001a",
+    "661d5fe1eac11fad33000024",
+    "661d6252eac11fad33000025",
+    "661d62dceac11fad33000026",
+    "662cfa24187cba990d000005",
+    "662cfd21187cba990d000009"
+  ]
+}

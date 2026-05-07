@@ -1,0 +1,24 @@
+{
+  "dataset": "gsm8k",
+  "model": "qwen3-8b",
+  "total_questions": 1319,
+  "total_wrong": 495,
+  "uq_threshold (bottom 20.0%)": -3.1527575969696047,
+  "wrong_and_low_uq_count": 13,
+  "oc_ratio": 0.0263,
+  "qids": [
+    "1079",
+    "1204",
+    "145",
+    "198",
+    "219",
+    "230",
+    "391",
+    "514",
+    "555",
+    "590",
+    "606",
+    "642",
+    "943"
+  ]
+}

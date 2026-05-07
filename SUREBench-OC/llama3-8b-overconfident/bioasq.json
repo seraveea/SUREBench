@@ -1,0 +1,14 @@
+{
+  "dataset": "bioasq",
+  "model": "llama3-8b",
+  "total_questions": 85,
+  "total_wrong": 40,
+  "uq_threshold (bottom 20.0%)": -2.9553253173828127,
+  "wrong_and_low_uq_count": 3,
+  "oc_ratio": 0.075,
+  "qids": [
+    "65f1eb84c4010b4d78000008",
+    "65f85ec7c4010b4d78000052",
+    "65f86e06c4010b4d7800005a"
+  ]
+}

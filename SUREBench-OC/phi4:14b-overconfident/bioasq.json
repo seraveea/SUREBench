@@ -1,0 +1,20 @@
+{
+  "dataset": "bioasq",
+  "model": "phi4:14b",
+  "total_questions": 340,
+  "total_wrong": 151,
+  "uq_threshold (bottom 20.0%)": -2.914880561828613,
+  "wrong_and_low_uq_count": 9,
+  "oc_ratio": 0.0596,
+  "qids": [
+    "65f1d234c4010b4d78000005",
+    "65f77919c4010b4d78000036",
+    "65f85ec7c4010b4d78000052",
+    "65f85fdbc4010b4d78000054",
+    "66088f67fdcbea915f00000e",
+    "66088ffafdcbea915f00000f",
+    "6616547dfdcbea915f00004f",
+    "661c416048a2c27714000008",
+    "662fc351187cba990d000014"
+  ]
+}

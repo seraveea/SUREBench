@@ -1,0 +1,33 @@
+{
+  "dataset": "bioasq",
+  "model": "mistral-nemo:12b",
+  "total_questions": 340,
+  "total_wrong": 202,
+  "uq_threshold (bottom 20.0%)": -3.0176194190979,
+  "wrong_and_low_uq_count": 22,
+  "oc_ratio": 0.1089,
+  "qids": [
+    "65cec1fb1930410b13000005",
+    "65cfa37c1930410b1300000d",
+    "65d1357c1930410b13000039",
+    "65d36e761930410b13000044",
+    "65f37aeac4010b4d7800000c",
+    "65f7754ec4010b4d7800002b",
+    "65f86e06c4010b4d7800005a",
+    "660810a0fdcbea915f000005",
+    "66088ddbfdcbea915f00000d",
+    "66099af7fdcbea915f000020",
+    "660d2a50fdcbea915f00003a",
+    "660d7491fdcbea915f000041",
+    "66150639fdcbea915f000047",
+    "661d2428eac11fad33000017",
+    "661d5fe1eac11fad33000024",
+    "661d62dceac11fad33000026",
+    "661d6473eac11fad33000027",
+    "66214cc6b9f8b89d7e000003",
+    "662cfc88187cba990d000008",
+    "662ee24a187cba990d00000d",
+    "663016bb187cba990d000023",
+    "6630390b187cba990d000035"
+  ]
+}

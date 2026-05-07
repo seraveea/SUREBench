@@ -1,0 +1,14 @@
+{
+  "dataset": "bioasq",
+  "model": "qwen3-32b",
+  "total_questions": 85,
+  "total_wrong": 39,
+  "uq_threshold (bottom 20.0%)": -3.101357126235962,
+  "wrong_and_low_uq_count": 3,
+  "oc_ratio": 0.0769,
+  "qids": [
+    "65f494d7c4010b4d78000013",
+    "65f70a55c4010b4d7800001b",
+    "65f85ec7c4010b4d78000052"
+  ]
+}

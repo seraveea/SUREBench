@@ -1,0 +1,21 @@
+{
+  "dataset": "bioasq",
+  "model": "llama3-405b",
+  "total_questions": 340,
+  "total_wrong": 142,
+  "uq_threshold (bottom 20.0%)": -2.9875648021698,
+  "wrong_and_low_uq_count": 10,
+  "oc_ratio": 0.0704,
+  "qids": [
+    "65cfdaae1930410b13000025",
+    "66088f67fdcbea915f00000e",
+    "66088ffafdcbea915f00000f",
+    "66099967fdcbea915f000018",
+    "660a8fc4fdcbea915f000027",
+    "660d7324fdcbea915f000040",
+    "661688cefdcbea915f000053",
+    "662cfc88187cba990d000008",
+    "662cfd21187cba990d000009",
+    "662e29f9187cba990d00000a"
+  ]
+}

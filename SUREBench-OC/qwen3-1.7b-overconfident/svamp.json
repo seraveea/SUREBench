@@ -1,0 +1,12 @@
+{
+  "dataset": "svamp",
+  "model": "qwen3-1.7b",
+  "total_questions": 300,
+  "total_wrong": 29,
+  "uq_threshold (bottom 20.0%)": -3.162220811843872,
+  "wrong_and_low_uq_count": 1,
+  "oc_ratio": 0.0345,
+  "qids": [
+    "chal-672"
+  ]
+}

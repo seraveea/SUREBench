@@ -1,0 +1,15 @@
+{
+  "dataset": "gsm8k",
+  "model": "llama3-405b",
+  "total_questions": 1319,
+  "total_wrong": 80,
+  "uq_threshold (bottom 20.0%)": -3.143971252441406,
+  "wrong_and_low_uq_count": 4,
+  "oc_ratio": 0.05,
+  "qids": [
+    "1309",
+    "681",
+    "823",
+    "952"
+  ]
+}

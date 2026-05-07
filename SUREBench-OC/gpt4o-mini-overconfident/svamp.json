@@ -1,0 +1,33 @@
+{
+  "dataset": "svamp",
+  "model": "gpt4o-mini",
+  "total_questions": 300,
+  "total_wrong": 55,
+  "uq_threshold (bottom 20.0%)": -3.1972243785858154,
+  "wrong_and_low_uq_count": 22,
+  "oc_ratio": 0.4,
+  "qids": [
+    "chal-204",
+    "chal-229",
+    "chal-275",
+    "chal-406",
+    "chal-480",
+    "chal-487",
+    "chal-501",
+    "chal-513",
+    "chal-566",
+    "chal-567",
+    "chal-641",
+    "chal-676",
+    "chal-693",
+    "chal-725",
+    "chal-765",
+    "chal-832",
+    "chal-845",
+    "chal-914",
+    "chal-932",
+    "chal-934",
+    "chal-968",
+    "chal-974"
+  ]
+}
