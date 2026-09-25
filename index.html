@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SURE — Webpage Test</title>
+  <style>body { max-width: 640px; margin: 64px auto; padding: 0 24px; font: 18px/1.6 system-ui, sans-serif; } button { font: inherit; padding: 8px 16px; cursor: pointer; }</style>
+</head>
+<body>
+  <h1>SURE</h1>
+  <p>If you can read this page, HTML rendering works.</p>
+  <button id="test" type="button">Test interaction</button>
+  <p id="status" role="status">Click the button to test JavaScript.</p>
+  <noscript>JavaScript is disabled in this browser.</noscript>
+  <script>
+    document.getElementById('test').addEventListener('click', function () {
+      document.getElementById('status').textContent = 'JavaScript works!';
+    });
+  </script>
+</body>
+</html>
