@@ -1,6 +1,11 @@
-# SUREBench
+# SURE: Semantic Uncertainty Evaluation
 
-SUREBench is a benchmark for evaluating semantic uncertainty quantification (UQ) in black-box LLM generation. The workflow has three steps:
+Research code for **What Does Semantic Uncertainty Reveal and What Does It Miss?**  
+**A Large-Scale Study of Semantic Uncertainty in LLM Natural Language Generation**
+
+**SURE is a large-scale empirical study of black-box semantic uncertainty quantification (SUQ) in LLM natural language generation.** It compares existing SUQ methods across question answering, mathematical reasoning, summarization, and multilingual translation, investigates low-uncertainty failures, and analyzes how semantic uncertainty relates to model capability and decoding behavior.
+
+This repository provides reusable generation, uncertainty estimation, and evaluation code for the study, using established public datasets. The workflow has three steps:
 
 1. Sample multiple answers for the same question.
 2. Compute uncertainty scores from the answer set.
@@ -19,6 +24,7 @@ https://www.bioasq.org/participate/challenges
 - `evaluation.py`: Task and UQ evaluation
 - `uq_methods/`: UQ method implementations (DSE, GWC, KLE, SNNE, LUQ, etc.)
 - `eval_pipelines/`: Dataset-specific evaluation pipelines
+- `SUREBench-OC/`: SURE-OC diagnostic subsets of low-quality, low-uncertainty generations from the evaluated public datasets
 
 ## Quick Start
 
@@ -176,9 +182,9 @@ export SUREBENCH_MODEL_ROOT=/path/to/your/models
 
 ## Citation
 
-If you use SUREBench in your paper or project, please include the corresponding paper/repository citation.
+If you use SURE’s evaluation code, results, or SURE-OC diagnostic subsets, please cite the paper **What Does Semantic Uncertainty Reveal and What Does It Miss? A Large-Scale Study of Semantic Uncertainty in LLM Natural Language Generation**.
 
-Original implementations of converd UQ methods:
+Original implementations of the evaluated SUQ methods:
 
 - [KLE](https://github.com/AlexanderVNikitin/kernel-language-entropy)
 - [DSE](https://github.com/lorenzkuhn/semantic_uncertainty)
