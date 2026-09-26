@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SURE — Semantic Uncertainty Evaluation</title>
+  <title>SURE — More Capable, More Certain?</title>
+  <meta name="description" content="SURE: a large-scale empirical study of semantic uncertainty in free-form LLM generation across tasks, models, and languages.">
   <style>
 :root { color-scheme:light; --ink:#363636; --muted:#666; --blue:#0072b2; --line:#e5e5e5; }
 * { box-sizing:border-box; }
@@ -19,6 +20,7 @@ h1 { margin:0; font-size:clamp(30px,4vw,48px); line-height:1.15; font-weight:600
 .project-links a:hover { background:#222; }
 .results-section { padding-top:8px; }
 .section-title { margin:0 0 28px; font-size:29px; font-weight:600; text-align:center; }
+.js-help { max-width:960px; margin:0 auto 28px; padding:12px 18px; border:1px solid #e7c66c; border-radius:6px; background:#fff8e5; color:#614a13; font-size:14px; text-align:center; }
 .controls { display:flex; align-items:flex-end; justify-content:center; flex-wrap:wrap; gap:22px 38px; margin:0 auto 32px; }
 .control-label { display:block; margin-bottom:7px; font-size:13px; color:var(--muted); font-weight:600; }
 .tasks { display:flex; flex-wrap:wrap; gap:6px; }
@@ -42,6 +44,9 @@ h2 { font-size:22px; margin:0; font-weight:600; }
 .chart .dataset { font-size:11px; }
 .chart .value { font-size:11px; font-variant-numeric:tabular-nums; }
 .chart .grid { stroke:#e9e9e9; stroke-width:1; }
+.chart .bar { transform-box:fill-box; transform-origin:center bottom; animation:bar-rise 900ms cubic-bezier(.22,.61,.36,1) both paused; }
+.chart.is-visible .bar { animation-play-state:running; }
+@keyframes bar-rise { from { transform:scaleY(0); } to { transform:scaleY(1); } }
 .chart .bar:hover { filter:brightness(.8); }
 .note { text-align:center; color:var(--muted); font-size:12px; margin:6px auto; max-width:1050px; }
 .notice { text-align:center; color:#765220; font-size:12px; margin:8px auto; max-width:960px; }
@@ -57,23 +62,134 @@ footer { max-width:1050px; margin:42px auto 0; padding-top:20px; text-align:cent
 @media(max-width:899px) { .chart-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } main { padding:0 24px 28px; } }
 @media(max-width:699px) { .chart-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } header { padding:36px 0; } .controls { gap:18px; } }
 @media(max-width:479px) { .chart-grid { grid-template-columns:1fr; row-gap:24px; } main { padding:0 18px 24px; } .model-control { width:100%; } button { padding:7px 12px; } .intro br { display:none; } .section-title { font-size:25px; } }
-@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .chart .bar { animation:none; } }
 .corpus-title { min-height:32px; margin:8px 0 4px; text-align:center; font-size:11px; font-weight:500; line-height:1.4; color:var(--muted); }
+
+/* ponytail: static research content stays readable with JavaScript disabled. */
+:root { --accent:#365cc9; }
+header { max-width:1140px; padding:64px 0 36px; }
+.eyebrow { color:var(--accent); font-weight:700; letter-spacing:.16em; }
+h1 { font-size:clamp(38px,5.2vw,66px); font-weight:700; line-height:1.08; letter-spacing:-.045em; }
+h1 span { color:var(--accent); }
+.intro { max-width:850px; font-size:clamp(19px,2.1vw,26px); margin:20px auto 26px; }
+.project-links a { font-size:14px; padding:8px 19px; }
+.project-links a:first-child { background:var(--accent); }
+.project-links a:first-child:hover { background:#2849aa; }
+a { color:var(--accent); }
+section[id] { scroll-margin-top:24px; }
+.scale { max-width:1140px; margin:0 auto 68px; }
+.scale-lead { text-align:center; color:var(--muted); font-size:12px; letter-spacing:.12em; text-transform:uppercase; margin:0 0 14px; }
+.scale-major { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); padding:28px 12px; background:#f5f7fd; border:1px solid #e5eaf9; border-radius:16px; }
+.scale-major article { padding:4px 14px; text-align:center; }
+.scale-major article+article { border-left:1px solid #dce3f5; }
+.stat-number { display:block; color:var(--accent); font-size:clamp(40px,5vw,64px); font-weight:700; line-height:1.15; letter-spacing:-.055em; font-variant-numeric:tabular-nums; }
+.stat-label { display:block; margin-top:9px; font-size:15px; font-weight:600; }
+.stat-note { display:block; margin:4px auto 0; max-width:240px; color:var(--muted); font-size:12px; line-height:1.5; }
+.scale-minor { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin:25px 0 20px; text-align:center; }
+.scale-minor .stat-number { color:#30374c; font-size:34px; letter-spacing:-.025em; }
+.task-tags { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin:18px 0; }
+.task-tags span { padding:4px 13px; background:#f6f6f8; border-radius:20px; font-size:13px; color:#4a5060; }
+.scale-footnote { max-width:950px; margin:16px auto 0; text-align:center; color:var(--muted); font-size:12px; }
+.count-details { max-width:950px; margin:12px auto 0; border:0; padding:0; font-size:14px; }
+.count-details summary { text-align:center; color:var(--accent); font-size:13px; }
+.count-details .count-body { margin-top:16px; padding:20px 24px; border:1px solid var(--line); border-radius:10px; }
+.count-details p { margin:12px 0 0; }
+.count-details table { font-size:13px; }
+.count-details caption { text-align:left; color:var(--muted); margin:0 0 8px; }
+.count-formula { font-variant-numeric:tabular-nums; }
+.research-section { max-width:1020px; margin:0 auto 62px; }
+.research-section .section-title { font-size:30px; margin-bottom:22px; }
+.research-copy { max-width:920px; margin:auto; font-size:17px; line-height:1.85; }
+.research-copy p { margin:0 0 17px; }
+.research-copy strong { color:#30374c; }
+.question-line { text-align:center; font-size:clamp(21px,2.4vw,28px); font-weight:600; line-height:1.45; margin:0 auto 24px; max-width:850px; }
+.study-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin:30px 0 0; }
+.study-steps article { border-top:2px solid #dbe3f8; padding-top:17px; }
+.study-steps h3 { margin:0 0 7px; font-size:16px; }
+.study-steps p { margin:0; font-size:14px; color:var(--muted); line-height:1.65; }
+.findings { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 34px; }
+.findings article { padding:23px 25px; background:#fafafa; border-radius:10px; border:1px solid #eceef2; }
+.finding-number { font-size:12px; letter-spacing:.08em; color:var(--accent); font-weight:700; }
+.findings h3 { margin:7px 0 10px; font-size:20px; line-height:1.35; font-weight:600; }
+.findings p { margin:0; font-size:15px; line-height:1.75; color:#565b65; }
+.conclusion { margin:26px 0 0; padding:17px 22px; border-left:3px solid var(--accent); background:#f5f7fd; font-size:17px; line-height:1.7; }
+.results-section { border-top:1px solid var(--line); padding-top:42px; }
+.results-intro { max-width:850px; margin:-9px auto 24px; text-align:center; color:var(--muted); font-size:15px; }
+@media(max-width:699px) {
+  header { padding:40px 0 28px; }
+  .scale { margin-bottom:46px; }
+  .scale-major { padding:20px 4px; }
+  .scale-major article { padding:4px 7px; }
+  .scale-major .stat-number { font-size:clamp(28px,6.8vw,44px); }
+  .stat-label { font-size:13px; }
+  .scale-minor { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 12px; }
+  .research-section { margin-bottom:44px; }
+  .research-copy { font-size:16px; }
+  .findings { grid-template-columns:1fr; gap:15px; }
+  .study-steps { grid-template-columns:1fr; gap:20px; }
+  .count-details .count-body { padding:15px; }
+}
+@media(max-width:399px) {
+  .scale-major { grid-template-columns:1fr; padding:12px 18px; }
+  .scale-major article { padding:16px 0; }
+  .scale-major article+article { border-left:0; border-top:1px solid #dce3f5; }
+  .scale-major .stat-number { font-size:48px; }
+}
   </style>
 </head>
 <body>
   <main>
     <header>
-      <p class="eyebrow">SURE · Interactive results</p>
-      <h1>More Capable, More Certain?</h1>
+      <p class="eyebrow">SURE · Semantic Uncertainty Evaluation</p>
+      <h1>More Capable, <span>More Certain?</span></h1>
       <p class="intro">A Large-Scale Study of Semantic Uncertainty<br>in Free-Form LLM Generation</p>
       <nav class="project-links" aria-label="Project links">
-        <a href="#experimental-results">Interactive Results</a>
-        <a href="https://anonymous.4open.science/r/SUREBench-CA71/" referrerpolicy="no-referrer">Anonymous Code</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#key-findings">Key Findings</a>
       </nav>
     </header>
+
+    <section class="scale" aria-label="Core evaluation scale">
+      <p class="scale-lead">Semantic uncertainty, studied at scale</p>
+      <div class="scale-major">
+        <article><strong class="stat-number">100,176</strong><span class="stat-label">Evaluation inputs</span><span class="stat-note">Across all datasets and directions</span></article>
+        <article><strong class="stat-number">12.83M</strong><span class="stat-label">Sampled responses*</span><span class="stat-note">10 responses per model–input pair</span></article>
+        <article><strong class="stat-number">24.37M</strong><span class="stat-label">SUQ scores*</span><span class="stat-note">19 measures per sampled response set</span></article>
+      </div>
+      <div class="scale-minor">
+        <article><strong class="stat-number">33</strong><span class="stat-label">Datasets &amp; directions</span><span class="stat-note">19 English-output datasets<br>14 non-English-target directions</span></article>
+        <article><strong class="stat-number">14</strong><span class="stat-label">Model checkpoints</span><span class="stat-note">13 in English-output evaluation<br>12 in multilingual translation</span></article>
+        <article><strong class="stat-number">19</strong><span class="stat-label">SUQ measures &amp; variants</span><span class="stat-note">From six semantic uncertainty studies</span></article>
+        <article><strong class="stat-number">4</strong><span class="stat-label">Task families</span><span class="stat-note">Factual recall, reasoning, abstraction,<br>and cross-lingual meaning preservation</span></article>
+      </div>
+      <div class="task-tags" aria-label="Evaluated tasks"><span>Question Answering</span><span>Mathematical Reasoning</span><span>Summarization</span><span>Multilingual Translation</span></div>
+      <p class="scale-footnote">*Response and SUQ totals are derived from the paper’s reported input counts and evaluation protocol, for the core evaluation shown here.</p>
+      <details class="count-details">
+        <summary>How we count the study’s scale</summary>
+        <div class="count-body">
+          <div class="table-scroll">
+            <table>
+              <caption>Core evaluation coverage</caption>
+              <thead><tr><th scope="col">Evaluation scope</th><th scope="col">Datasets / directions</th><th scope="col">Inputs</th><th scope="col">Models</th><th scope="col">Model–input pairs</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">English-output tasks</th><td>19</td><td>80,496</td><td>13</td><td>1,046,448</td></tr>
+                <tr><th scope="row">Non-English-target translation</th><td>14</td><td>19,680</td><td>12</td><td>236,160</td></tr>
+                <tr><th scope="row">Combined</th><td>33</td><td>100,176</td><td>14 distinct checkpoints</td><td>1,282,608</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="count-formula"><strong>Sampled responses:</strong> (80,496 × 13 + 19,680 × 12) × 10 = <strong>12,826,080</strong>.<br><strong>SUQ scores:</strong> (80,496 × 13 + 19,680 × 12) × 19 = <strong>24,369,552</strong>.</p>
+          <p>Each SUQ measure evaluates a set of 10 sampled responses for one input and one model. The SUQ count is therefore per response set, not per individual response. These are protocol-derived totals, not an audit of completed generation or scoring logs.</p>
+          <p>The 33 settings comprise five QA datasets, two math datasets, four summarization datasets, and 22 translation directions: eight into English, six non-English to non-English, and eight English to multilingual. Input counts are summed across settings, without deduplicating related inputs across translation directions.</p>
+          <p>The two evaluation scopes overlap in model coverage. The 14-checkpoint union counts Mistral-7B-Instruct-v0.2 and v0.3 separately. Additional sampled-model checks, temperature and backbone ablations, consistency baselines, and quality-metric re-evaluations are excluded from these totals.</p>
+        </div>
+      </details>
+    </section>
+
     <section id="experimental-results" class="results-section">
-    <h2 class="section-title">Experimental Results</h2>
+    <h2 class="section-title">Explore the Results</h2>
+    <p class="results-intro">Choose a task and generation model to inspect each dataset individually. Every uncertainty method has its own panel.</p>
+    <p class="js-help" role="note"><strong>Enable JavaScript to view the bar charts.</strong> On anonymous.4open.science, set the JavaScript toggle in the top toolbar to <strong>JS on</strong> to display the charts and use the task and model selectors.</p>
     <div class="controls">
       <div class="task-control">
         <span class="control-label" id="task-label">Task</span>
@@ -106,6 +222,40 @@ footer { max-width:1050px; margin:42px auto 0; padding-top:20px; text-align:cent
       </details>
     </section>
     </section>
+
+    <section id="abstract" class="research-section" aria-labelledby="abstract-title">
+      <h2 class="section-title" id="abstract-title">Abstract</h2>
+      <div class="research-copy">
+        <p>When does semantic uncertainty identify unreliable LLM generations, and when does semantic agreement fail as a proxy for quality? <strong>SURE is a large-scale empirical study of black-box semantic uncertainty quantification (SUQ)</strong> using established public datasets. We compare 19 measures and variants from six studies across question answering, mathematical reasoning, summarization, and translation. The English-output evaluation covers 19 datasets and 13 LLMs; multilingual translation covers 12 LLMs across 14 non-English-target directions.</p>
+        <p>Method effectiveness depends on the task and quality metric, while simple consistency measures remain competitive in multilingual translation. We use <strong>SURE-OC</strong>, diagnostic subsets of low-quality generations assigned low uncertainty, to examine confidently incorrect outputs. In English-output tasks, stronger models tend to assign lower uncertainty to their remaining errors. QA experiments also reveal a trade-off: higher decoding temperature can improve uncertainty separability while reducing answer accuracy.</p>
+      </div>
+    </section>
+
+    <section id="introduction" class="research-section" aria-labelledby="introduction-title">
+      <h2 class="section-title" id="introduction-title">Why Study Semantic Uncertainty?</h2>
+      <p class="question-line">If a model keeps giving the same answer,<br>how much should we trust it?</p>
+      <div class="research-copy">
+        <p>Different wordings can express the same answer, and a fluent, consistent answer can still be wrong. SUQ measures variation in meaning across sampled responses. SURE asks how reliably those signals identify low-quality generations when the task, model, or output language changes.</p>
+        <p>Shared generations and semantic evidence make the method comparisons meaningful. Alongside the English-output tasks, translation into English, between non-English languages, and from English into multiple languages tests whether uncertainty estimates remain useful across language settings. The behavioral analyses of capability, overconfidence, and decoding focus on the English-output evaluation.</p>
+      </div>
+      <div class="study-steps">
+        <article><h3>01 · Sample responses</h3><p>Generate 10 responses for each model–input pair under a shared evaluation protocol.</p></article>
+        <article><h3>02 · Measure semantic variation</h3><p>Compare 19 SUQ measures and variants using shared sampled outputs and semantic evidence.</p></article>
+        <article><h3>03 · Test reliability</h3><p>Evaluate error ranking with AUROC/AUARC for QA and math, and quality ranking with PRR for summarization and translation.</p></article>
+      </div>
+    </section>
+
+    <section id="key-findings" class="research-section" aria-labelledby="findings-title">
+      <h2 class="section-title" id="findings-title">What We Find</h2>
+      <div class="findings">
+        <article><span class="finding-number">01 / MODEL CAPABILITY</span><h3>Stronger models can still be confidently wrong.</h3><p>In the English-output evaluation, more capable models tend to assign lower semantic uncertainty to their remaining errors. Better generation quality does not automatically make those errors easier to detect.</p></article>
+        <article><span class="finding-number">02 / TASK DEPENDENCE</span><h3>The task and quality metric change the comparison.</h3><p>Method rankings vary across tasks and quality targets. A single entailment label can lose partial agreement between longer outputs, motivating task-aware representations and evaluation.</p></article>
+        <article><span class="finding-number">03 / MULTILINGUAL GENERATION</span><h3>Simple consistency remains competitive across languages.</h3><p>Across 12 models and 14 non-English-target directions, Discrete SNNE (only-denom) leads the 19 SUQ measures in ROUGE-L-based macro PRR for every model. Simple consistency baselines remain competitive in the evaluated comparisons.</p></article>
+        <article><span class="finding-number">04 / DECODING BEHAVIOR</span><h3>More detectable errors can come at an accuracy cost.</h3><p>In QA, higher decoding temperature can improve uncertainty separability while reducing answer accuracy. Decoding choices affect both generation quality and the usefulness of uncertainty estimates.</p></article>
+      </div>
+      <p class="conclusion"><strong>Takeaway.</strong> Reliable uncertainty evaluation needs to account for the task, output language, and quality criterion. Semantic consistency is one piece of evidence about generation quality.</p>
+    </section>
+
     <footer>Source: SURE, Appendices H.2–H.3 (English-output tasks) and H.9 (multilingual translation) · QA/Math: AUROC · All translation and summarization: ROUGE-L-based PRR. Higher is better within each metric.</footer>
     <noscript><p>Enable JavaScript to select tasks and models and display the chart.</p></noscript>
   </main>
@@ -117,6 +267,14 @@ const modelSelect = document.getElementById('model');
 const charts = document.getElementById('charts');
 const buttons = Array.from(document.querySelectorAll('[data-task]'));
 let selectedTask = 'qa';
+// ponytail: native CSS animates bars once each chart enters view; no animation library.
+const chartObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    entry.target.classList.add('is-visible');
+    chartObserver.unobserve(entry.target);
+  }
+}, {threshold:0.15});
 function updateModels() {
   const previous = modelSelect.value;
   modelSelect.replaceChildren();
@@ -197,6 +355,7 @@ function render() {
   const notice=document.getElementById('notice');
   notice.hidden=!rows.some(row=>row.display!==row.label);
   notice.textContent=notice.hidden?'':'Repeated source labels are distinguished by their table-row number; variant labels have not been inferred.';
+  chartObserver.disconnect();
   charts.replaceChildren();
   rows.forEach((row,i) => {
     const panel=document.createElement('div');
@@ -214,7 +373,8 @@ function render() {
         panel.append(caption);
       }
       const id=i+'-'+j;
-      svgElement(panel,'svg',{class:'chart',role:'img','aria-labelledby':'svg-title-'+id+' svg-desc-'+id});
+      const chart=svgElement(panel,'svg',{class:'chart',role:'img','aria-labelledby':'svg-title-'+id+' svg-desc-'+id});
+      chartObserver.observe(chart);
     });
     charts.append(panel);
   });
